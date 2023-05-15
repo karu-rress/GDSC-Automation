@@ -1,10 +1,20 @@
-﻿namespace githubstats
+﻿using System;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using Discord;
+using Discord.WebSocket;
+using Discord.Webhook;
+using Discord.Commands;
+using System.Reflection;
+using Octokit;
+
+namespace githubstats
 {
-    internal class Program
+    class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] _)
         {
-            Console.WriteLine("Hello, World!");
+            await new GitHubStats().RunAsync();
         }
     }
 }
