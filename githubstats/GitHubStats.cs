@@ -29,7 +29,7 @@ internal class GitHubStats
     {
         client = new(config);
         gdsc = github.User.Get("GDSC-CAU").GetAwaiter().GetResult();
-        github.Credentials = new(File.ReadAllText("./token.txt"));
+        github.Credentials = new(File.ReadAllText("../../../token.txt"));
         var repos = github.Repository.GetAllForCurrent().GetAwaiter().GetResult();
         string result = "";
         foreach (var item in repos)
@@ -39,6 +39,7 @@ internal class GitHubStats
         commands = new()
         {
             ["!test"] = (msg) => SendAsync(msg, "Hi, Karu! How are you doing now?"),
+            ["!thank"] = (msg) => SendAsync(msg, "감사합니다!"),
             ["!ping"] = (msg) => SendAsync(msg, "pong!"),
             ["!debug"] = PrintDebugInfoAsync,
             ["!followers"] = (msg) => SendAsync(msg, $"Whoa, you have {gdsc.Followers} followers!"),
@@ -89,7 +90,7 @@ Current username: {client.CurrentUser.Username}");
         // var token = File.ReadAllText("token.txt");
         // var token = JsonConvert.DeserializeObject<AConfigurationClass>(File.ReadAllText("config.json")).Token;
 
-        await client.LoginAsync(TokenType.Bot, File.ReadAllText("botauth.txt"));
+        await client.LoginAsync(TokenType.Bot, File.ReadAllText("../../../botauth.txt"));
         await client.StartAsync();
 
         await Task.Delay(-1);
