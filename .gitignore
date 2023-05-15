@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/githubstats/key.txt
+/githubstats/botauth.txt
+/githubstats/token.txt
